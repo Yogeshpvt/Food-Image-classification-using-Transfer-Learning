@@ -62,11 +62,8 @@ test_labels_encoded = le.transform(test_labels)
 le.fit(train_labels)
 train_labels_encoded = le.transform(train_labels)
 
-#Split data into test and train datasets (already split but assigning to meaningful convention)
+#Split data into test and train datasets
 x_train, y_train, x_test, y_test = train_images, train_labels_encoded, test_images, test_labels_encoded
-
-###################################################################
-# Normalize pixel values to between 0 and 1
 x_train, x_test = x_train / 255.0, x_test / 255.0
 
 #One hot encode y values for neural network. 
@@ -119,7 +116,7 @@ cm = confusion_matrix(test_labels, prediction_RF)
 #print(cm)
 sns.heatmap(cm, annot=True)
 
-#Check results on a few select images
+#testing images
 n=np.random.randint(0, x_test.shape[3]) #0 
 img = x_test[n]
 plt.imshow(img)
